@@ -12,3 +12,11 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# DuckDB
+*.duckdb
+
+# dbt
+target/
+logs/
+dbt_packages/
