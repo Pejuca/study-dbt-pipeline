@@ -10,21 +10,22 @@ WITH raw_t AS (
 
 ),
 
+
 dates_corrected AS (
     SELECT
-        generate_series(
-            (SELECT min(ref_date) FROM raw_t),
-            (SELECT max(ref_date) FROM raw_t),
-            interval '1 month'
-        )::date AS ref_date
-
+        ref_date
+    FROM generate_series(
+        (SELECT min(ref_date) FROM raw_t),
+        (SELECT max(ref_date) FROM raw_t),
+        interval '1 month'
+    ) AS t(ref_date)
 )
 
 SELECT
     sp.ref_date,
     raw_t.serie_code,
     raw_t.ipca_nivel
-from dates_corrected AS sp
+FROM dates_corrected AS sp
 LEFT JOIN raw_t
     ON raw_t.ref_date = sp.ref_date
 ORDER BY sp.ref_date ASC
