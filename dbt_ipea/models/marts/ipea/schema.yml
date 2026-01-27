@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: dim_date
+    columns:
+    - name: ref_date
+      tests:
+        - not_null
+        - unique
+  
+  - name: fct_ipca_monthly
+    columns:
+    - name: ref_date
+      tests:
+        - not_null
+        - unique
+
+    - name: serie_code
+      tests: 
+        - not_null
+
+    - name: ipca_mom
+        
+    - name: ipca_yoy
+
+  - name: fct_ipca_latest
+    columns:
+    - name: ref_date
+      tests:
+        - not_null
+        - unique
+
+    - name: serie_code
+      tests: 
+        - not_null
+
+    - name: ipca_mom
+        
+    - name: ipca_yoy
+
+  - name: fct_ipca_yoy
+    columns:
+    - name: ref_date
+      tests:
+        - not_null
+        - unique
+
+    - name: ipca_yoy
+      tests:
+        - not_null
