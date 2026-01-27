@@ -1,9 +1,10 @@
 import duckdb
 from pathlib import Path
 
-duck_path = Path(
-    'data/duckdb/ipea.duckdb'
-)
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+duck_path = PROJECT_ROOT / "data" / "duckdb" / "ipea.duckdb"
+
 duck_path.parent.mkdir(
     parents = True,
     exist_ok = True

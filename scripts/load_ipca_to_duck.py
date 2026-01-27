@@ -4,9 +4,9 @@ import logging
 import sys
 
 # Path do duckdb
-duck_path = Path(
-    'data/duckdb/ipea.duckdb'
-)
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+duck_path = PROJECT_ROOT / "data" / "duckdb" / "ipea.duckdb"
 
 con = duckdb.connect(str(duck_path))
 
