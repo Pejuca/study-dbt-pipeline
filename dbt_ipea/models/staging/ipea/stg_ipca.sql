@@ -3,11 +3,12 @@ WITH raw_t AS (
     SELECT
         date_trunc('month', date)::date as ref_date,
         upper(trim(serie)) AS serie_code,
-        cast(value AS double) AS ipca_nivel
+        avg(cast(value AS double)) AS ipca_nivel
     FROM {{
         source('ipea', 'raw_ipca') 
     }} -- ipea.duckdb , table raw_ipca
-
+    GROUP BY 1,2
+    ORDER BY ref_date ASC
 ),
 
 

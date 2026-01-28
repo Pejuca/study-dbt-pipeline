@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: stg_ipca
+    columns:
+    - name: ref_date
+      tests:
+        - not_null
+        - unique

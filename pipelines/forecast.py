@@ -25,6 +25,7 @@ df = con.execute(
 
 df['ref_date'] = pd.to_datetime(df['ref_date'])
 df = df.set_index('ref_date')
+df = df.asfreq("MS")
 
 # auto-arima
 model = auto_arima(

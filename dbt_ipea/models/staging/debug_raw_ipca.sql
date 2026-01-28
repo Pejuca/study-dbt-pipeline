@@ -1,3 +1,3 @@
 select
     *
-from raw_ipca
+from {{ source('ipea', 'raw_ipca') }}
