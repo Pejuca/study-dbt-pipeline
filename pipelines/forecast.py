@@ -74,7 +74,7 @@ df_final['model_arima'] = str(model.order)
 print(df_final.head(5))
 
 con.register('df_final', df_final.reset_index())
-con.execute('CREATE OR REPLACE TABLE fct_ipca_forecast AS SELECT * FROM df_final')
+con.execute('CREATE OR REPLACE TABLE ext_ipca_forecast AS SELECT * FROM df_final')
 print(
     f'Criado forecast para ipca_nivel a partir de {last_date}'
 )

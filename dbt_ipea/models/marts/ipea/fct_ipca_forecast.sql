@@ -1,0 +1,1 @@
+select * from ipea.fct_ipca_monthly
