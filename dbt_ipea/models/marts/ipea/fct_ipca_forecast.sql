@@ -1,1 +1,1 @@
-select * from ipea.fct_ipca_monthly
+select * from ipea.ext_ipca_forecast

@@ -78,3 +78,5 @@ con.execute('CREATE OR REPLACE TABLE ext_ipca_forecast AS SELECT * FROM df_final
 print(
     f'Criado forecast para ipca_nivel a partir de {last_date}'
 )
+
+con.close()
