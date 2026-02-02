@@ -43,27 +43,41 @@ df_fcast = con.execute(
 for df in [df_hist, df_fcast]:
     df["ref_date"] = pd.to_datetime(df["ref_date"])
 
+start_date = st.date_input(
+    "Data inicial",
+    value = pd.to_datetime("2024-01-01"),
+    min_value = df_hist["ref_date"].min(),
+    max_value = df_fcast["ref_date"].max()
+)
+
+df_hist_f = df_hist[df_hist["ref_date"] >= pd.to_datetime(start_date)]
+df_fcast_f = df_fcast[df_fcast["ref_date"] >= pd.to_datetime(start_date)]
+
 # Plots
 def plot_plotly(title, ycol):
     fig = go.Figure()
 
     fig.add_trace(
         go. Scatter(
-            x = df_hist['ref_date'],
-            y = df_hist[ycol],
-            mode = 'lines',
+            x = df_hist_f['ref_date'],
+            y = df_hist_f[ycol],
+            # mode = 'lines',
             name = 'Histórico',
-            line = dict(color = 'blue')
-        )
+            line = dict(color = 'blue'),
+            mode = "lines+markers",
+            marker=dict(size = 4)
+        ) 
     )
 
     fig.add_trace(
         go. Scatter(
-            x = df_fcast['ref_date'],
-            y = df_fcast[ycol],
+            x = df_fcast_f['ref_date'],
+            y = df_fcast_f[ycol],
             mode = 'lines',
             name = 'Forecast',
             line = dict(color = 'red', dash = 'dash')
+            # mode = "lines+markers",
+            # marker=dict(size = 3) 
         )
     )
 
@@ -75,8 +89,10 @@ def plot_plotly(title, ycol):
 
     fig.update_layout(
         title = title,
-        hovermode = 'x unified',
-        template = 'plotly_white'
+        template = "simple_white",
+        font = dict(family="Arial", size=13),
+        title_x = 0.02,
+        hovermode = "x unified"
     )
 
     return fig
