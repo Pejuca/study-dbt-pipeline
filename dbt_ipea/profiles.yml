@@ -1,0 +1,6 @@
+dbt_ipea:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/duckdb/ipea.duckdb
