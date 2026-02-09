@@ -50,7 +50,7 @@ jobs:
 
       - name: Run dbt stg and int
         env:
-          DBT_PROFILES_DIR: dbt_ipea
+          DBT_PROFILES_DIR: .
         run: |
           cd dbt_ipea
           dbt deps
@@ -65,7 +65,7 @@ jobs:
 
       - name: Run dbt marts
         env:
-          DBT_PROFILES_DIR: dbt_ipea
+          DBT_PROFILES_DIR: .
         run: |
           cd dbt_ipea
           dbt deps
