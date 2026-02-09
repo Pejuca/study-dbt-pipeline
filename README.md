@@ -29,3 +29,9 @@ O S3 é utilizado como data lake para armazenar dados brutos e praticar conceito
 - Cloud storage
 
 O DuckDB funciona como um warehouse local, que acaba versionado em função do GitHub Actions, contendo todas as tabelas transformadas e modelos finais.
+
+--
+
+## Por fim, o dashboard desenvolvido pode ser acessado aqui:
+
+https://study-dbt-pipeline-ipca.streamlit.app/
