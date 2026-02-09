@@ -38,11 +38,15 @@ jobs:
 
       - name: Init duckdb
         run: |
-          python init_duckdb.py
+          python scripts/init_duckdb.py
       
       - name: Load raw to duckdb
+        env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_DEFAULT_REGION: us-east-1
         run: |
-          python load_ipca_to_duck.py
+          python scripts/load_ipca_to_duck.py
 
       - name: Run dbt stg and int
         run: |
