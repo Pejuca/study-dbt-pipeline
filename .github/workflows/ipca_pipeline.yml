@@ -49,6 +49,8 @@ jobs:
           python scripts/load_ipca_to_duck.py
 
       - name: Run dbt stg and int
+        env:
+          DBT_PROFILES_DIR: dbt_ipea
         run: |
           cd dbt_ipea
           dbt deps
@@ -62,6 +64,8 @@ jobs:
           python pipelines/forecast.py
 
       - name: Run dbt marts
+        env:
+          DBT_PROFILES_DIR: dbt_ipea
         run: |
           cd dbt_ipea
           dbt deps
